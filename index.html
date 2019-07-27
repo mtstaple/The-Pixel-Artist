@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.6.0/css/all.css" integrity="sha256-vGcZJWF0zoN5mVCMq7Kiz7mpH50fwfAxyWj9pvjwU3U=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <title>The Pixel Artist</title>
+</head>
+<body>
+  <div class="grid-container">
+    <header class="header header-title">The Pixel Artist
+    <i class="fas fa-arrow-circle-right sidenav-open-icon"></i>
+    </header>
+    <aside class="sidenav">
+      <div class="sidenav-header">
+        <span id="toolbar" class="sidenav-title">
+          <i class="fas fa-tools"></i> TOOLBAR
+        </span>
+        <i class="fas fa-arrow-circle-left sidenav-close-icon"></i>
+      </div>
+      <ul class="sidenav-list">
+        <li id="grid-size" class="sidenav-canvas-settings">
+          <form id="size-picker">
+            <div class="cell-value cell-size">
+              <div>
+                <p class="cell-title">Height: </p>
+                <div class="grid-field-container">
+                  <input class="form-controls grid-field" type="number" id="input-height" name="height" min="10" value="25">
+                </div>
+              </div>
+              <div>
+                <p class="cell-title">Width: </p>
+                <div class="grid-field-container">
+                  <input class="form-controls grid-field" type="number" id="input-width" name="width" min="10" value="25">
+                </div>
+              </div>
+            </div>
+            <div class="btn-draw-container">
+              <button type="submit" class="btn btn-default btn-block btn-draw">Generate</button>
+            </div>
+          </form>
+        </li>
+        <li id="color-picker-tools" class="sidenav-canvas-settings">
+          <p class="color-title">Color:</p>
+          <div id="color-container">
+            <input type="color" id="color-picker" class="form-control colors" value="#268BFF">
+          </div>
+        </li>
+        <div id="art-tools" class="canvas-tools-menu">
+          <li id="pencil" class="sidenav-list-item drawing-tool canvas-tools">
+            <div class="tool-block">
+              <span class="tool-block-icon"><i class="fas fa-pencil-alt"></i></span>
+              <span class="tool-block-title">Pencil</span>
+            </div>
+          </li>
+          <li id="eraser" class="sidenav-list-item drawing-tool canvas-tools">
+            <div class="tool-block">
+              <span class="tool-block-icon"><i class="fas fa-eraser"></i></span>
+              <span class="tool-block-title">Eraser</span>
+            </div>
+          </li>
+          <li id="fill" class="sidenav-list-item drawing-tool canvas-tools">
+            <div class="tool-block">
+              <span class="tool-block-icon"><i class="fas fa-fill-drip"></i></span>
+              <span class="tool-block-title">Fill</span>
+            </div>
+          </li>
+        </div>
+        <li id="reset" class="sidenav-list-item drawing-tool">
+          <div class="tool-block">
+            <span class="tool-block-icon"><i class="far fa-trash-alt"></i></span>
+            <span class="tool-block-title">Clear Canvas</span>
+          </div>
+        </li>
+     </ul>
+    </aside>
+
+     <main class="main">
+       <div class="artboard-canvas">
+         <table id="pixel-canvas" class="artboard" style="width=50%"></table>
+       </div>
+     </main>
+
+    <footer class="footer">
+      <div class="footer-icon-nav">
+        <a href="https://www.w3.org/html/"><i id="html5" class="fab fa-html5"></i></a>
+        <a href="https://www.w3.org/Style/CSS/"><i id="css3" class="fab fa-css3-alt"></i></a>
+        <a href="https://www.ecma-international.org/publications/standards/Ecma-262.htm"><i id="js" class="fab fa-js-square"></i></a>
+        <a href="https://fontawesome.com/?from=io"><i id="fa" class="fab fa-font-awesome"></i></a>
+        <a href="https://github.com/mtstaple"><i id="github" class="fab fa-github-square"></i></a>
+      </div>
+      <div class="footer-author">Michael Stapleton &copy; 2019</div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/sidenav.js"></script>
+    <script src="js/pixelartist.js"></script>
+  </div>
+</body>
+</html>

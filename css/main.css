@@ -1,0 +1,398 @@
+body {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Assign grid instructions to our parent grid container, mobile-first (hide the sidenav) */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 1fr 30px;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+  height: 100vh;
+}
+
+.sidenav-open-icon {
+  position: fixed; /* Needs to stay visible for all mobile scrolling */
+  display: flex;
+  top: 6px;
+  left: 8px;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  border: 1px solid slategray;
+  border-radius: 50%;
+  z-index: 1;
+  cursor: pointer;
+  font-size: 36px;
+  color: lightgray;
+}
+
+.sidenav-open-icon:hover {
+  background-color: white;
+  border: 1px solid white;
+  color: slategray;
+  cursor: pointer;
+}
+
+.header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background-color: #538cc6;
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 700;
+  text-shadow: 2px 2px 5px #000;
+}
+
+/* Make room for the menu icon on mobile */
+.header-title {
+  justify-content: center;
+  align-items: center;
+}
+
+/* Sidebar with toolbar */
+.sidenav {
+  grid-area: sidenav;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 240px;
+  position: fixed;
+  overflow-y: auto;
+  transform: translateX(-245px);
+  transition: all .6s ease-in-out;
+  z-index: 2; /* Needs to sit above the arrow menu icon */
+  background-color: slategray;
+  box-shadow:
+    -1px -1px 5px #000, -1.5px -1.5px 5px lightgray,
+    1px -1px 5px #000, 1.5px -1.5px 5px lightgray,
+    -1px 1px 5px #000, -1.5px 1.5px 5px lightgray,
+    1px 1px 5px #000, 1.5px 1.5px 5px lightgray;
+}
+
+.sidenav.active {
+  transform: translateX(0);
+}
+
+.sidenav-header {
+  padding: 20px 10px 0 20px;
+  color: #ddd;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.sidenav-title {
+  color: #ddd;
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 400;
+  text-shadow: 2px 2px 5px #000;
+}
+
+/* Close sidenav icon */
+.sidenav-close-icon,
+.fa-arrow-circle-left {
+  position: absolute;
+  visibility: visible;
+  cursor: pointer;
+  font-size: 36px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: #538cc6;
+  top: 6px;
+  right: 8px;
+  color: white;
+}
+
+/* Close sidenav icon hover */
+.sidenav-close-icon:hover,
+.fa-arrow-circle-left:hover {
+  color: #538cc6;
+  background-color: white;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.sidenav-list {
+  padding: 0;
+  padding-top: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  list-style-type: none;
+}
+
+.sidenav-canvas-settings {
+  color: #ddd;
+  padding: 2px 0 15px 20px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sidenav-list-item {
+  padding: 20px;
+  color: #ddd;
+}
+
+.sidenav-list li:hover {
+  background-color: lightblue;
+  outline: 1px solid black;
+  color: black;
+  cursor: pointer;
+}
+
+.canvas-tools.active {
+background-color: #538cc6;
+outline: 1px solid #ddd;
+cursor: pointer;
+transform: translateX(0);
+}
+
+.grid-field-container {
+    width: 75%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.grid-field {
+    width: 50% !important;
+    padding: 10px 5px 10px 10px;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.btn-draw-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+}
+
+.btn-draw {
+    background-color: #538cc6;
+    color: #fff;
+    text-shadow: 3px 3px 5px #000;
+    border-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px 0px;
+    width: 77.5%;
+    font-size: 1rem;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+.cell-value {
+    display: flex;
+}
+
+.row-cell {
+    display: flex;
+  }
+
+.col-cell {
+    display: flex;
+    padding-left: 60px;
+  }
+
+.form-control {
+  display: flex;
+  font-size: 1rem;
+  text-align: center;
+  background-color: #268bff;
+  border-radius: 10px;
+  /* border-width: 0.1em; */
+  border-color: #ddd;
+  border-radius: 10px;
+  box-shadow:
+  -1px -1px 1px silver,
+  1px -1px 1px silver,
+  -1px 1px 1px silver,
+  1px 1px 1px silver;
+  padding: 2px;
+  width: 74%;
+}
+
+.tool-block-icon {
+  padding-right: 10px;
+  justify-content: space-between;
+}
+
+/* Main body containing the canvas grid */
+.main {
+  grid-area: main;
+  display: block;
+  box-sizing: border-box;
+  background-color: #c6d9ec;
+}
+
+.artboard-canvas {
+  width: 100%;
+    height: 100%;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
+
+table,
+#pixel-canvas {
+  margin: 20px;
+  box-sizing: border-box;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow:
+    -1px -1px 5px #000, -2px -2px 5px lightgray,
+    1px -1px 5px #000, 2px -2px 5px lightgray,
+    -1px 1px 5px #000, -2px 2px 5px lightgray,
+    1px 1px 5px #000, 2px 2px 5px lightgray;
+}
+
+table,
+tr,
+td {
+  border: silver 1px dotted;
+}
+
+/* 'border-collapse' CSS property specifies whether a table's cells have shared
+  or separate borders; 'collapse' value causes cells to have shared borders */
+table {
+  border-collapse: collapse;
+}
+
+tr {
+  height: 20px;
+}
+
+td {
+  min-width: 20px;
+}
+
+/* Footer */
+.footer {
+  grid-area: footer;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 16px;
+  background-color: #538cc6;
+  font-family: 'Press Start 2P', cursive;
+  font-weight: lighter;
+  font-size: 0.6rem;
+  text-shadow: 2px 2px 5px #000;
+}
+
+.footer-icon-nav i {
+      display: inline-block;
+      align-items: center;
+      justify-content: space-around;
+      color: slategray;
+      font-size: 24px;
+      padding: 0 10px;
+}
+
+/* Coding icons */
+#html5 {
+  color: #f16529;
+}
+
+#html5:hover {
+  color: white;
+}
+
+#css3 {
+  color: lightblue;
+}
+
+#css3:hover {
+  color: white;
+}
+
+#js {
+  color: #e8d63b;
+}
+
+#js:hover {
+  color: white;
+}
+
+#fa {
+  color: #1e75e0;
+}
+
+#fa:hover {
+  color: white;
+}
+
+#github {
+  color: slategray;
+}
+
+#github:hover {
+  color: white;
+}
+
+/* Non-mobile styles, 750px breakpoint */
+@media only screen and (min-width: 46.875em) {
+  /* Show the sidenav */
+  .grid-container {
+    grid-template-columns: 240px 1fr;
+    grid-template-areas:
+      "sidenav header"
+      "sidenav main"
+      "sidenav footer";
+  }
+
+  .sidenav {
+    position: relative;
+    transform: translateX(0);
+  }
+
+  .sidenav-close-icon,
+  .fa-arrow-circle-left {
+    visibility: hidden;
+  }
+
+}
+
+@media screen and (min-width: 320px) {
+  .footer-icon-nav i {
+    font-size: calc(12px + 6 * ((100vw - 320px) / 680));
+    padding: 0 5px;
+  }
+
+  .footer-author {
+    font-size: calc(0.6em + 6 * ((100vw - 320px) / 680));
+  }
+
+  .header-title {
+    font-size: calc(14px + 6 * ((100vw - 320px) / 680));
+  }
+
+}
+
+@media screen and (min-width: 600px) {
+  .footer-icon-nav i {
+    font-size: 28px;
+  }
+
+  .header-title {
+    font-size: 1.5rem;
+  }
+
+  .footer-author {
+    font-size: 0.5rem;
+  }
+
+}
